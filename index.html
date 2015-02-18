@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Device Ready Example</title>
+
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    // Wait for device API libraries to load
+    //
+    function onLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+    }
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        // Now safe to use device APIs
+    }
+	
+	function Exchange()
+	{
+		var rub = document.getElementById('rubels').value;
+		var course = document.getElementById('course').value;
+		var belcourse = document.getElementById('belcourse').value;
+		var dollars = (rub/course).toFixed(1);
+		var belki = (dollars*belcourse).toFixed();
+		document.getElementById('dollars').value =  number_format(dollars);
+		document.getElementById('bel_rubels').value =  number_format(belki);
+		var mess = rub + ' => $ ===>' + number_format(dollars) + "<br/>\n" + ' ===> BLR ==> ' + number_format(belki);
+		if (navigator.notification != undefined) navigator.notification.alert( mess, 'Convertion done','Ok' );
+	}
+
+
+ function number_format(number, decimals, dec_point, thousands_sep) {
+	number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
+	  var n = !isFinite(+number) ? 0 : +number,
+		prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+		sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+		dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+		s = '',
+		toFixedFix = function (n, prec) {
+		  var k = Math.pow(10, prec);
+		  return '' + (Math.round(n * k) / k).toFixed(prec);
+		};
+	  // Fix for IE parseFloat(0.55).toFixed(0) = 0;
+	  s = (prec ? toFixedFix(n, prec) : '' + Math.round(n))
+		.split('.');
+	  if (s[0].length > 3) {
+		s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+	  }
+	  if ((s[1] || '')
+		.length < prec) {
+		s[1] = s[1] || '';
+		s[1] += new Array(prec - s[1].length + 1).join('0');
+	  }
+	  return s.join(dec);
+	}
+    </script>
+  </head>
+  <body onload="onLoad()">
+	<form>
+		<div>
+			<label for="rubels">Rubels:</label> 
+			<input type="text" name="rubles" id="rubels" value=""/>
+		</div>
+		<div>
+			<label for="course">Course $/RUB:</label> 
+			<input type="text" name="course" id="course" value="68"/>
+		</div>
+		<div>
+			<label for="belcourse">Course $/BEL_RUB:</label> 
+			<input type="text" name="belcourse" id="belcourse" value="15400"/>
+		</div>
+		<div>
+			<input type="button" name="subm" value="Exchange" onclick="Exchange();" />
+		</div>
+		
+		<div>
+			<label for="dollars">Dollars:</label> 
+			<input type="text" name="dollars" id="dollars" value=""/>
+		</div>
+		<div>
+			<label for="bel_rubels">~ Bel. Rubels:</label> 
+			<input type="text" name="bel_rubels" id="bel_rubels" value=""/>
+		</div>
+		<input type="reset" name="reset" value="Reset form" />
+	</form>
+  </body>
+</html>
