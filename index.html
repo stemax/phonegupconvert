@@ -3,6 +3,104 @@
   <head>
     <title>Convert currency tool</title>
 
+	<style>
+	.panel-info {
+    border-color: #bce8f1;
+}
+.panel {
+    background-color: #fff;
+    border: 1px solid #bce8f1;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    padding: 10px;
+}
+.panel-info .panel-heading {
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+    color: #31708f;	
+}
+
+.panel-heading {
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    padding: 10px 15px;
+}
+
+	html
+	{
+		padding:5px;
+		margin:5px;
+	}
+	input
+	{
+		background-color: #fff;
+		background-image: none;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+		color: #555;
+		display: block;
+		font-size: 14px;
+		height: 34px;
+		line-height: 1.42857;
+		padding: 6px 12px;
+		transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+		margin-bottom:10px;
+	}
+	
+	label
+	{
+	color: #777;
+	font-size: 20px;
+	}
+	
+	.label-success {
+    background-color: #5cb85c !important;
+}
+
+	.label-primary {
+    background-color: #337ab7 !important;
+	}
+	
+	.label{
+	cursor:pointer;
+	background-color: #777;
+    border-radius: 0.25em;
+    color: #fff;
+    display: inline;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    padding: 0.2em 0.6em 0.3em;
+    text-align: center;
+    vertical-align: baseline;
+    white-space: nowrap;
+}
+	
+	.btn
+	{
+	background-color: #337ab7;
+    border-color: #2e6da4;
+    color: #fff;
+    -moz-user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;    
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+	border-radius: 6px;
+    font-size: 18px;
+    line-height: 1.33333;
+    padding: 0px 12px;
+	}
+	
+	</style>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
 
@@ -59,32 +157,38 @@
     </script>
   </head>
   <body onload="onLoad()">
+  <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Currency exchange rates</h3>
+      </div>
+      <div class="panel-body">
 	<form>
 		<div>
-			<label for="rubels">Rubels:</label> 
-			<input type="text" name="rubles" id="rubels" value=""/>
+			<label class="label label-primary" for="rubels">RUB:</label> 
+			<input type="text" name="rubles" id="rubels" value="1000"/>
 		</div>
 		<div>
-			<label for="course">Course $/RUB:</label> 
+			<label class="label" for="course">Rate $/RUB:</label> 
 			<input type="text" name="course" id="course" value="68"/>
 		</div>
 		<div>
-			<label for="belcourse">Course $/BEL_RUB:</label> 
+			<label class="label" for="belcourse">Rate $/BLR:</label> 
 			<input type="text" name="belcourse" id="belcourse" value="15400"/>
 		</div>
 		<div>
-			<input type="button" name="subm" value="Exchange" onclick="Exchange();" />
+			<input type="button" class="btn" name="subm" value="Exchange" onclick="Exchange();" />
 		</div>
 		
 		<div>
-			<label for="dollars">Dollars:</label> 
+			<label class="label label-success" for="dollars">$ US:</label> 
 			<input type="text" name="dollars" id="dollars" value=""/>
 		</div>
 		<div>
-			<label for="bel_rubels">~ Bel. Rubels:</label> 
+			<label class="label" for="bel_rubels">~ BLR:</label> 
 			<input type="text" name="bel_rubels" id="bel_rubels" value=""/>
 		</div>
-		<input type="reset" name="reset" value="Reset form" />
 	</form>
+	</div>
+ </div>
   </body>
 </html>
